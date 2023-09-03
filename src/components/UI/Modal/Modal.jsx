@@ -6,7 +6,7 @@ const Modal = (props) => {
   const classes = `${styles.modal} ${props.className ? props.className : ""}`;
   return ReactDOM.createPortal(
     <div className={classes}>{props.children}</div>,
-    document.querySelector(".cart-modal")
+    document.querySelector(".modals")
   );
 };
 

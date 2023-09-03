@@ -5,7 +5,7 @@ import styles from "./Overlay.module.css";
 const Overlay = (props) => {
   return ReactDOM.createPortal(
     <div className={styles.overlay} onClick={props.onClose}></div>,
-    document.querySelector(".overlay")
+    document.querySelector(".backdrops")
   );
 };
 

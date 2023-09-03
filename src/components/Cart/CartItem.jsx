@@ -1,12 +1,7 @@
 import PropTypes from "prop-types";
-import * as React from "react";
-import CartContext from "../../store/cart-context";
 import styles from "./CartItem.module.css";
 
-const { useContext } = React;
-
 const CartItem = (props) => {
-  const cartContext = useContext(CartContext);
   const convertedPrice = `$${+props.item.price.toFixed(2)}`;
 
   return (

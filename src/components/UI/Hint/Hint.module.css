@@ -1,0 +1,10 @@
+.hint {
+  display: block;
+  text-align: center;
+  font-size: 20px;
+}
+
+.hint + button {
+  display: block;
+  margin: 1rem 0 0 auto;
+}

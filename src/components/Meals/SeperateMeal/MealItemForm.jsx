@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import * as React from "react";
+import Button from "../../UI/Button/Button";
 import Input from "../../UI/Input/Input";
 import styles from "./MealItemForm.module.css";
 
@@ -29,7 +30,7 @@ const MealItemForm = (props) => {
           defaultValue: "1",
         }}
       />
-      <button type="submit">+ Add</button>
+      <Button btnText="+ Add" />
       {!amountIsValid && <p>Please enter a valid amount!</p>}
     </form>
   );

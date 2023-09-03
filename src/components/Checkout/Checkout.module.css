@@ -1,0 +1,83 @@
+.form {
+  height: fit-content;
+  overflow: auto;
+}
+
+.combination {
+  width: 100%;
+  display: flex;
+  column-gap: 20px;
+}
+
+.control {
+  margin-bottom: 0.5rem;
+  width: 50%;
+}
+
+.control label {
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+  display: block;
+}
+
+.control input {
+  font: inherit;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.actions {
+  margin-top: 10px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.actions button {
+  font: inherit;
+  color: #5a1a01;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  border-radius: 25px;
+  padding: 0.5rem 2rem;
+}
+
+.actions button:hover,
+.actions button:active {
+  background-color: #ffe6dc;
+}
+
+.actions .confirm {
+  border: 1px solid #5a1a01;
+  background-color: #5a1a01;
+  color: white;
+}
+
+.actions .confirm:hover,
+.actions .confirm:active {
+  background-color: #7a2706;
+}
+
+.actions .confirm:disabled,
+.actions .confirm:disabled:hover,
+.actions .confirm:disabled:active {
+  cursor: not-allowed;
+  background-color: #ccc;
+  border-color: #ccc;
+}
+
+.invalid label {
+  color: #ca3e51;
+}
+
+.invalid input {
+  border-color: #aa0b20;
+  background-color: #ffeff1;
+}
+
+.error-text {
+  margin: 5px 0;
+  color: #ca3e51;
+}

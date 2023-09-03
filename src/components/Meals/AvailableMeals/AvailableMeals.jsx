@@ -1,41 +1,39 @@
+import * as React from "react";
+import useHttp from "../../../hooks/use-http";
 import Card from "../../UI/Card/Card";
+import LoadingSpinner from "../../UI/LoadingSpinner/LoadingSpinner";
 import MealItem from "../SeperateMeal/MealItem";
 import styles from "./AvailableMeals.module.css";
 
-const availableMealsArr = [
-  {
-    id: "m1",
-    name: "Sushi",
-    description: "Finest fish and veggies",
-    price: 22.99,
-  },
-  {
-    id: "m2",
-    name: "Schnitzel",
-    description: "A german specialty!",
-    price: 16.5,
-  },
-  {
-    id: "m3",
-    name: "Barbecue Burger",
-    description: "American, raw, meaty",
-    price: 12.99,
-  },
-  {
-    id: "m4",
-    name: "Green Bowl",
-    description: "Healthy...and green...",
-    price: 18.99,
-  },
-  {
-    id: "m5",
-    name: "Pizza Sausage",
-    description: "Favorite type of food for many people",
-    price: 20.99,
-  },
-];
+const { useEffect, useState } = React;
 
 const AvailableMeals = () => {
+  const [availableMealsArr, setAvailableMealsArr] = useState([]);
+  const { sendRequest, isLoading, error } = useHttp(transformMeals);
+
+  useEffect(() => {
+    sendRequest({
+      requestConfig: {
+        url: "https://react-http-93a9d-default-rtdb.firebaseio.com/meals.json",
+      },
+      applyData: transformMeals,
+    });
+  }, [sendRequest]);
+
+  function transformMeals(mealsData) {
+    const transformedMealsData = Object.entries(mealsData).map(
+      ([key, value]) => {
+        return {
+          id: key,
+          name: value.name,
+          description: value.description,
+          price: value.price,
+        };
+      }
+    );
+    setAvailableMealsArr(transformedMealsData);
+  }
+
   return (
     <Card className={styles.meals}>
       <ul>
@@ -43,10 +41,16 @@ const AvailableMeals = () => {
           return <MealItem key={meal.id} theMeal={meal} />;
         })}
       </ul>
+      {isLoading && !error && <LoadingSpinner />}
+      {error && (
+        <span
+          style={{ display: "block", textAlign: "center", fontSize: "20px" }}
+        >
+          {error}
+        </span>
+      )}
     </Card>
   );
 };
-
-AvailableMeals.propTypes = {};
 
 export default AvailableMeals;
